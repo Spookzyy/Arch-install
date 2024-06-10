@@ -1,0 +1,26 @@
+once logged in run the command 
+
+sudo usermod -aG input $USER
+
+After running this Reboot/Logout and login.
+
+Then you can open a terminal and run 
+
+waybar &amp;
+
+the result will be terrible but we will add my Config files later on.
+
+we will need the fonts 
+
+sudo pacman -S otf-font-awesome ttf-arimo-nerd noto-fonts
+
+after running that run waybar again (optinal)
+
+now we copy the config files to out destination.
+
+mkdir -p ~/.config/waybar
+cp /etc/xdg/waybar/* ~/.config/waybar/
+
+now we can add our config files if the config has moved over.
+
+just copy Config, style and scripts folder and it should look nice.
