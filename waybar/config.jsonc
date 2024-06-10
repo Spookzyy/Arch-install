@@ -1,0 +1,47 @@
+
+ GNU nano 8.0                    /home/jake/.config/waybar/config.jsonc                               
+            "on-click": "nm-connection-editor"
+        },
+        "network#vpn": {
+            "interface": "tun0",
+            "format": "",
+            "format-disconnected": "",
+            "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+            "on-click": "nm-connection-editor"
+        },
+        "pulseaudio": {
+            "scroll-step": 1,
+            "format": "{icon} {volume}%{format_source}",
+            "format-bluetooth": "{icon} {volume}%{format_source}",
+            "format-bluetooth-muted": " {icon}{format_source}",
+            "format-muted": " {format_source}",
+            "format-source": "  {volume}%",
+            "format-source-muted": " ",
+            "format-icons": {
+                "headphone": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        },
+        "custom/weather": {
+            "return-type": "json",
+            "exec": "sh $HOME/.config/waybar/scripts/weather.sh",
+            "interval": 300,
+            "on-click": "firefox https://wttr.in"
+        },
+        "custom/poweroff": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "wlogout"
+        },
+        "custom/mail": {
+            "tooltip": false,
+            "exec": "sh $HOME/.config/waybar/scripts/mail.sh",
+            "interval": 120,
+            "on-click": "thunderbird && swaymsg '[app_id=thunderbird] focus'"
+        },
+    }
+]
