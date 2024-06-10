@@ -1,0 +1,46 @@
+  GNU nano 8.0                      /home/jake/.config/waybar/style.css                                
+#memory,
+#mode,
+#network.vpn,
+#network.wifi,
+#network.ethernet,
+#network.disconnected,
+#pulseaudio,
+#taskbar,
+#temperature,
+#tray {
+    padding: 0 6px;
+    margin: 0 0px;
+    color: #ffffff;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.bat2.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+#taskbar button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 3px #ffffff;
+}
+
+#taskbar button.active {
+    background-color: #64727D;
+    box-shadow: inset 0 3px #ffffff;
+}
