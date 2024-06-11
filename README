@@ -6,6 +6,8 @@ To enable multilib repository, uncomment the [multilib] section in /etc/pacman.c
 --------------------------------------------------------------------------------------
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+at the end of MISC ootions 
+add ILoveCandy For the pacman Progress bar (optinal)
 
 Then upgrade the system sudo pacman -Syu.
 
