@@ -1,28 +1,34 @@
+@import "macchiato.css";
+
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Clear Sans", "Font Awesome 6 Free Solid";
-    font-size: 13px;
-    min-height: 0;
+    font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 1);
-    color: #ffffff;
+    background-color: rgba(0,0,0,0);
+    border-radius: 13px;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
-window#waybar.empty {
-    color: rgba(0,0,0,0);
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
 }
 
-.topbar {
-    border-bottom: 3px solid rgba(100, 114, 125, 1);
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-.bottombar {
-    border-top: 3px solid rgba(100, 114, 125, 1);
+/* you can set a style on hover for any module like this */
+#pulseaudio:hover {
+    background-color: @surface2;
 }
 
 #workspaces button {
@@ -31,14 +37,14 @@ window#waybar.empty {
     color: #ffffff;
 }
 
+
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 3px #ffffff;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 3px #ffffff;
+    background-color: @lavender;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
@@ -47,61 +53,84 @@ window#waybar.empty {
 
 #mode {
     background-color: #64727D;
-    border-top: 3px solid #ffffff;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-#backlight,
-#battery.bat1,
-#battery.bat2,
 #clock,
+#battery,
 #cpu,
-#custom-mail,
-#custom-poweroff,
-#custom-weather,
-#disk,
-#idle_inhibitor,
 #memory,
-#mode,
-#network.vpn,
-#network.wifi,
-#network.ethernet,
-#network.disconnected,
-#pulseaudio,
-#taskbar,
 #temperature,
-#tray {
-    padding: 0 6px;
-    margin: 0 0px;
-    color: #ffffff;
+#network,
+#pulseaudio
+{
+    padding: 0 10px;
+}
+
+#pulseaudio {
+    color: @maroon;
+}
+
+#network {
+    color: @yellow;
+}
+
+#temperature {
+    color: @sky;
+}
+
+#battery {
+    color: @green;
+}
+
+#clock {
+    color: @flamingo;
+}
+
+#window {
+    color: @rosewater;
+}
+
+.modules-right,.modules-left,.modules-center {
+    background-color: @base;
+    border-radius: 15px;
+}
+.modules-right {
+    padding: 0 10px;
+}
+
+.modules-left {
+    padding: 0 20px;
+}
+
+.modules-center {
+    padding: 0 10px;
+}
+#battery.charging, #battery.plugged {
+    color: @sapphire;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
         color: #000000;
     }
 }
 
-#battery.bat2.critical:not(.charging) {
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
     background-color: #f53c3c;
     color: #ffffff;
     animation-name: blink;
     animation-duration: 0.5s;
-    animation-timing-function: linear;
+    animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
+label:focus {
+    background-color: #000000;
 }
 
-#taskbar button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 3px #ffffff;
-}
-
-#taskbar button.active {
-    background-color: #64727D;
-    box-shadow: inset 0 3px #ffffff;
+#pulseaudio.muted {
+    color: @text;
 }
