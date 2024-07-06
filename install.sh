@@ -33,4 +33,3 @@ sudo pacman -S --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-
 yay -S steam lact coolercontrol openrgb lutris heroic-games-launcher microsoft-edge-bin 
 
 sudo pacman -Sy
-
