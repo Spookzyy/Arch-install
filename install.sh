@@ -3,7 +3,7 @@ clear
 
 sudo pacman -S firefox 
 
-sudo pacman -S waybar otf-font-awesome ttf-arimo-nerd noto fonts
+sudo pacman -S waybar otf-font-awesome ttf-arimo-nerd noto-fonts
 
 mkdir -p ~/.config/waybar
 cp /etc/xdg/waybar/* ~/.config/waybar/
