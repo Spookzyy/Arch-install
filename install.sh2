@@ -1,0 +1,3 @@
+#!/bin/bash
+
+cp -r /Arch-install/hyprland .dot/  ~/.config
