@@ -1,110 +1,129 @@
+//#############################################################
+//#############################################################
+//## ██╗░░░██╗████████╗██╗░░██╗░█████╗░██████╗░░██████╗██╗░░██╗
+//## ██║░░░██║╚══██╔══╝██║░██╔╝██╔══██╗██╔══██╗██╔════╝██║░░██║
+//## ██║░░░██║░░░██║░░░█████═╝░███████║██████╔╝╚█████╗░███████║
+//## ██║░░░██║░░░██║░░░██╔═██╗░██╔══██║██╔══██╗░╚═══██╗██╔══██║
+//## ╚██████╔╝░░░██║░░░██║░╚██╗██║░░██║██║░░██║██████╔╝██║░░██║
+//## ░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝╚═════╝░╚═╝░░╚═╝
+//#############################################################
+//#############################################################
+
 {
-	"layer": "top",
-    "width": 1750,
-    "margin-top": 0,
-    "margn-bottom": 0,
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/rmenu", "custom/date", "hyprland/workspaces"],
+    "modules-center": ["custom/clock"],
+    "modules-right": ["custom/update", "pulseaudio", "backlight", "battery", "battery#bat2", "tray", "custom/powerOption"],
 
-	"modules-left": ["cpu","memory","temperature", "bluetooth"],
-	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["network","pulseaudio", "battery","clock"],
-
-	"pulseaudio": {
-		"tooltip": false,
-		"scroll-step": 5,
-		"format": "{icon} {volume}%",
-		"format-muted": "{icon} {volume}%",
-		"on-click":"pavucontrol",
-		"format-icons": {
-			"default": [
-                "󰕿", 
-                "󰖀", 
-                "󰕾"
-            ]
-		}
-	},
     "hyprland/workspaces": {
-		"disable-scroll": true,
-        "on-click": "activate",
-        "all-outputs": true,
-        "active-only": false,
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-        },
-        "format": "{icon}",
-        "format-icons": {
-            "active": "<span font='12'>󰮯</span>",
-            "empty": "<span font='8'></span>",
-            "persistent": "󰊠",
-        },
+      "format": "{icon}",
+      "format-icons": {
+        "1": "",
+        "2": "󰈹",
+        "3": "󰨞",
+        "4": "󰙯",
+        "5": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "-99": "",
+        "active": "",
+        "default": ""
+      }
     },
 
-	"network": {
-		"tooltip": false,
-		"format-wifi": "{icon} {bandwidthDownBits}",
-		"format-ethernet": "",
-        "interval": 30,
-
-        "format-icons": [
-            "󰤯", 
-            "󰤟", 
-            "󰤢", 
-            "󰤥", 
-            "󰤨"
-        ]
-	},
-
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "UnitedKingdom/London",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+	"format-icons": [""]
+        //"format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
     "battery": {
+    	"interval" : 1,
         "states": {
-            "good": 95,
+            // "good": 95,
             "warning": 30,
-            "critical": 10
+            "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂅 {capacity}%",
-        "format-plugged": "󰂅 {capacity}%",
-        "format-alt": "<span>{time}</span> {icon}",
-        "format-icons": [
-            "󰁻", 
-            "󰁽", 
-            "󰁿", 
-            "󰂁", 
-            "󰁹"
-        ]
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        //"format-source": "{volume}% ",
+        //"format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󱢶 ",
+            "headset": "󰋎 ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
     },
 
-	"clock": {
-        "tooltip": true,
-        "interval": 60,
-        "format": "{:%H:%M | %a, %b %d}",
-        "tooltip-format": "{:%Y-%m-%d}",
+    "custom/powerOption": {
+    	"on-click" : "wlogout",
+	"format" : "󰢚 ",
+	"interval" : "once",
+	"tooltip" : false
+    },
+    "custom/rmenu" : {
+        "on-click" : "$exec wofi --show drun ",
+        "format" : "󰣇 ",
+        "interval" : "once",
+        "tooltip" : false
     },
 
-    "cpu": {
-        "interval": 15,
-        "format": "󰍛 {}%",
-        "max-length": 10
-    },
-    "temperature": {
-        "interval": 15,
-        "format": " {}°C",
-        "max-length": 10
+    "custom/update": {
+        "interval" : 120,
+        "return-type" : "string",
+        "exec" : "~/.config/waybar/modules/checkupdate.sh",
+        "tooltip" : false,
+        "on-click" : "setsid -f kitty -e paru -Syyu"
     },
 
-    "memory": {
-        "interval": 30,
-        "format": " {used}GiB",
-        "max-length": 13
+    "custom/clock": {
+	"interval" : 1,
+	"return-type" : "string",
+	"exec" : "~/.config/waybar/modules/clock.sh",
+	"tooltip" : false
     },
-    "bluetooth": {
-        "format": "󰂯 Connecting...",
-        "format-disabled": "󰂲 Off",
-        "format-connected": "󰂱 {device_alias}",
-        "on-click": "blueman-manager",
-        "on-click-right": "rfkill toggle bluetooth",
-    },
+
+    "custom/date": {
+    "interval": 1,
+    "return-type": "string",
+    "exec": "~/.config/waybar/modules/date.sh",
+    "tooltip": false
+    }
 }
