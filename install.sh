@@ -1,4 +1,6 @@
 #!/bin/bash
+clear 
+
 sudo pacman -S firefox 
 
 sudo pacman -S waybar otf-font-awesome ttf-arimo-nerd noto fonts
