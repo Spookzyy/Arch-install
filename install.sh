@@ -9,7 +9,7 @@ mkdir -p ~/.config/waybar
 
 cp /etc/xdg/waybar/* ~/.config/waybar/
 
-cp /home/jake/Arch-install/hyprland.dot/waybar ~/.config/waybar
+cp -r /home/jake/Arch-install/hyprland.dot/waybar ~/.config/waybar
 
 sudo pacman -S --needed base-devel git 
 
